@@ -28,12 +28,12 @@ class FinalResultDashboardCollection extends BaseDashboardCollection
     function countTotals(BaseDashboardCountValueObject $valueObject)
     {
         // totalen bijwerken
-        $this->totalCountValueObject->addEmployeesTotal(count($valueObject->getEmployeesTotal()));
+        $this->totalCountValueObject->addEmployeesTotal($valueObject->getEmployeesTotal());
 
         // per key de getelde employees toevoegen
         $keys = $valueObject->getEmployeeCountKeys();
         foreach($keys as $key) {
-            $this->totalCountValueObject->addEmployeeCountForKey($key, count($valueObject->getEmployeeCountForKey($key)));
+            $this->totalCountValueObject->addEmployeeCountForKey($key, $valueObject->getEmployeeCountForKey($key));
         }
     }
 
