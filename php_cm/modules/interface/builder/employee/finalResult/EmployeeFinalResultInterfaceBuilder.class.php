@@ -95,7 +95,7 @@ class EmployeeFinalResultInterfaceBuilder extends AbstractEmployeeInterfaceBuild
         $safeFormHandler->storeSafeValue('employeeId', $employeeId);
 
         $safeFormHandler->addIntegerInputFormatType('total_score');
-        $safeFormHandler->addStringInputFormatType ('total_score_comments');
+        $safeFormHandler->addStringInputFormatType ('total_score_comment');
         if ($isAllowedDetailScores) {
             $safeFormHandler->addIntegerInputFormatType('behaviour_score');
             $safeFormHandler->addStringInputFormatType ('behaviour_score_comment');
