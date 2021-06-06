@@ -63,7 +63,7 @@
             </td>
         </tr>
     {if $interfaceObject->showRemarks()}
-        {if $valueObject->hasTotalScoreComment() && $previousValueObject->hasTotalScoreComment()}
+        {if $valueObject->hasTotalScoreComment() || $previousValueObject->hasTotalScoreComment()}
         <tr class="comment-row" id="{$interfaceObject->getToggleNoteId(EmployeeFinalResultView::TOTAL_NOTE_NAME)}" {if !$interfaceObject->isInitialVisibleNotes()} style="display:none;"{/if}>
             <td class="content-line" colspan="100%">
                 {if $valueObject->hasTotalScoreComment()}
