@@ -19,7 +19,7 @@
         </td>
     {/if}
     <td class="{if $interfaceObject->hasDateWarning()}warning-text{/if}">
-        {DateConverter::display($valueObject->getEvaluationDate())}
+        {DateConverter::display($valueObject->getEndDate())}
     </td>
     <td class="actions">
         {$interfaceObject->getEditLink()}{$interfaceObject->getRemoveLink()}{$interfaceObject->getHistoryLink()}
