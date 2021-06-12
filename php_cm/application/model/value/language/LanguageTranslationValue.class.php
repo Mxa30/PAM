@@ -63,6 +63,8 @@ class LanguageTranslationValue
     const en__FEMALE = 'Female';
     const nl__FEMALE = 'vrouw';
     const ev__FEMALE = 'vrouw';
+    const en__OTHER = 'Other';
+    const nl__OTHER = 'Anders';
     const en__FORMS = 'forms';
     const nl__FORMS = 'formulieren';
     const ev__FORMS = 'formulieren';

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2013-09-23 18:40:03
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-12 21:34:28
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\list/employeeFilterDetail.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1758252406ee38b9c11-82068896%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '06771b5595dbea8aba07351b521cdca5e2f88e03' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\list/employeeFilterDetail.tpl',
-      1 => 1379954117,
+      1 => 1623521645,
       2 => 'file',
     ),
   ),
@@ -74,6 +74,19 @@ $_template->assign('values',EmployeeAssessmentFilterValue::values(EmployeeAssess
             </td>
         </tr>
     <?php }?>
+
+    <?php if ($_smarty_tpl->getVariable('interfaceObject')->value->showGenderFilter()){?>
+        <tr>
+            <td>
+                <select onchange="<?php echo $_smarty_tpl->getVariable('interfaceObject')->value->submitFunction();?>
+" id="filter_gender" name="filter_gender">
+                <?php $_template = new Smarty_Internal_Template('components/selectOptionsComponent.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+$_template->assign('values',EmployeeGenderFilterValue::values());$_template->assign('currentValue',$_smarty_tpl->getVariable('interfaceObject')->value->getSelectedGenderFilterValue());$_template->assign('required',false);$_template->assign('subject',TXT_LC('GENDER'));$_template->assign('converter','EmployeeGenderFilterConverter'); echo $_template->getRenderedTemplate();?><?php unset($_template);?>
+                </select>
+            </td>
+        </tr>
+    <?php }?>
+
     <?php if ($_smarty_tpl->getVariable('interfaceObject')->value->showSortFilter()){?>
         <tr>
             <td>

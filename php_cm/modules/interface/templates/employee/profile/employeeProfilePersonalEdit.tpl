@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td class="form-label">
-            <label for="sex">{'GENDER'|TXT_UCF}</label>
+            <label for="sex">{'GENDER'|TXT_UCF}rrrrrrrrrrrrrrrrrr</label>
         </td>
         <td class="form-value">
             {include    file='components/selectRadioComponent.tpl'

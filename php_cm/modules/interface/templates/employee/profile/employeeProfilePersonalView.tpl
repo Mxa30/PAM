@@ -39,7 +39,7 @@
     {assign var=gender value=$valueObject->getGender()}
     {if !empty($gender)}
     <tr>
-        <td class="content-label">{'GENDER'|TXT_UCF}:</td>
+        <td class="content-label">{'GENDER'|TXT_UCF}:zzzzzzzzzzzzzzzzzzzzzzz</td>
         <td class="content-value">{EmployeeGenderConverter::display($gender)}</td>
     </tr>
     {else}

@@ -19,7 +19,7 @@
         <td class="form-value"><input name="city" type="text" id="city" size="30" value="{$employeeProfile.city}" tabindex="15"></td>
     </tr>
     <tr>
-        <td class="form-label">{'GENDER'|TXT_UCF} : </td>
+        <td class="form-label">{'GENDER'|TXT_UCF} : bbbbbbbbbbbbbbbbbbbbbbbbbbbb</td>
         <td class="form-value">{$gender_selector}</td>
         <td class="form-label">{'TELEPHONE_NUMBER'|TXT_UCF} : </td>
         <td class="form-value"><input name="phone_number" type="text" id="phone_number" size="30" value="{$employeeProfile.phone_number}" tabindex="16"></td>

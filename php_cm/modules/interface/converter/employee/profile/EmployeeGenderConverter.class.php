@@ -21,6 +21,9 @@ class EmployeeGenderConverter extends AbstractBaseConverter
             case EmployeeGenderValue::FEMALE:
                 $display = TXT_UCF('FEMALE');
                 break;
+            case EmployeeGenderValue::OTHER:
+                $display = TXT_UCF('OTHER');
+                break;
         }
         return $display;
     }
