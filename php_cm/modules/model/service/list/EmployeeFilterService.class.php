@@ -12,6 +12,7 @@ require_once('modules/model/queries/employee/EmployeeInfoQueries.class.php');
 
 // value
 require_once('modules/model/value/list/EmployeeAssessmentFilterValue.class.php');
+require_once('modules/model/value/list/EmployeeGenderFilterValue.class.php');
 require_once('modules/model/value/list/EmployeeSortFilterValue.class.php');
 require_once('modules/model/value/list/BossFilterValue.class.php');
 
@@ -26,6 +27,7 @@ class EmployeeFilterService
 
     /* private */ const SESSION_STORE_SEARCH_EMPLOYEE    = 's_employee';
     /* private */ const SESSION_STORE_FILTER_ASSESSMENT  = 'i_assessment_filter';
+    /* private */ const SESSION_STORE_FILTER_GENDER      = 'i_gender_filter';
     /* private */ const SESSION_STORE_FILTER_BOSS        = 'i_boss_filters';
     /* private */ const SESSION_STORE_FILTER_DEPARTMENT  = 'i_department_filters';
     /* private */ const SESSION_STORE_FILTER_FUNCTION    = 'i_function_filters';
@@ -48,6 +50,7 @@ class EmployeeFilterService
         // filter
         // default op evaluatie status
         self::initializeAssessmentFilter($doClear);
+        self::initializeGenderFilter($doClear);
         self::initializeSortFilter($doClear);
         self::initializeBossFilter($doClear);
         self::initializeDepartmentFilter($doClear);
@@ -58,6 +61,7 @@ class EmployeeFilterService
     static function hasActiveFilters()
     {
         return  self::hasActiveAssessmentFilter() ||
+                self::hasActiveGenderFilter() ||
                 self::hasActiveBossFilter() ||
                 self::hasActiveDepartmentFilter() ||
                 self::hasActiveFunctionFilter();
@@ -96,13 +100,14 @@ class EmployeeFilterService
     static function getShowFilterPermission()
     {
         $showAssessmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_ASSESSEMENT_STATE_FILTER);
+        $showGenderFilter     = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_GENDER_FILTER);
         $showBossFilter       = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_BOSS_FILTER);
         $showDepartmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_DEPARTMENT_FILTER);
         $showFunctionFilter   = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_FUNCTION_FILTER);
         $showSortFilter       = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_ASSESSEMENT_STATE_FILTER) ||
                                 PermissionsService::isViewAllowed(PERMISSION_EMPLOYEE_SCORE_FINALIZE_SCORE);
 
-        return $showAssessmentFilter || $showBossFilter || $showDepartmentFilter || $showFunctionFilter || $showSortFilter;
+        return $showAssessmentFilter || $showGenderFilter || $showBossFilter || $showDepartmentFilter || $showFunctionFilter || $showSortFilter;
     }
 
     ////////////////////////////////////////////////////////////////
@@ -198,6 +203,35 @@ class EmployeeFilterService
     static function hasActiveAssessmentFilter()
     {
         return !empty($_SESSION[self::SESSION_STORE_FILTER_ASSESSMENT]);
+    }
+
+    ////////////////////////////////////////////////////////////////
+    // employee gender
+    ////////////////////////////////////////////////////////////////
+
+    static function initializeGenderFilter($doClear = self::CLEAR_FILTER)
+    {
+
+        if ($doClear == self::CLEAR_FILTER ||
+            PermissionsService::isAccessDenied(PERMISSION_EMPLOYEES_GENDER_FILTER)) {
+            unset($_SESSION[self::SESSION_STORE_FILTER_GENDER]);
+        }
+    }
+
+    static function storeGenderFilter($employeeFilterValue)
+    {
+        $_SESSION[self::SESSION_STORE_FILTER_GENDER] = $employeeFilterValue;
+    }
+
+    static function retrieveGenderFilter($emptyValue = EmployeeGenderFilterValue::ANY)
+    {
+        return self::hasActiveGenderFilter() ? $_SESSION[self::SESSION_STORE_FILTER_GENDER] : $emptyValue;
+    }
+
+
+    static function hasActiveGenderFilter()
+    {
+        return !empty($_SESSION[self::SESSION_STORE_FILTER_GENDER]);
     }
 
     ////////////////////////////////////////////////////////////////
@@ -319,7 +353,8 @@ class EmployeeFilterService
 
     // haal alle toegestane employeeIds op.
     // ** voor externe functies de EmployeeSelectService varianten gebruiken!!
-    static function getAllowedEmployeeIds(  $bossFilterValue,
+    static function getAllowedEmployeeIds(  $genderFilter = null,
+                                            $bossFilterValue,
                                             $filteredEmployeeIds = self::NO_EMPLOYEEID_FILTER,
                                             $searchFilter = null,
                                             $departmentFilterValue = null,
@@ -328,7 +363,8 @@ class EmployeeFilterService
                                             $returnAsString = true)
     {
         list($selectIsBoss, $selectHasNoBoss, $selectBossId) = BossFilterValue::explainValue($bossFilterValue);
-        $query = EmployeeFilterQueries::selectAllowedEmployeeIds(   $searchFilter,
+        $query = EmployeeFilterQueries::selectAllowedEmployeeIds(   $genderFilter,
+                                                                    $searchFilter,
                                                                     $filteredEmployeeIds,
                                                                     $selectBossId,
                                                                     $selectHasNoBoss,
@@ -369,9 +405,11 @@ class EmployeeFilterService
         $bossFilter         = self::retrieveBossFilter();
         $departmentFilter   = self::retrieveDepartmentFilter();
         $mainFunctionFilter = self::retrieveFunctionFilter();
+        $genderFilter       = self::retrieveGenderFilter();
 
         // wie mogen we zien...
-        $allowedEmployeeIds = self::getAllowedEmployeeIds(  $bossFilter,
+        $allowedEmployeeIds = self::getAllowedEmployeeIds(  $genderFilter,
+                                                            $bossFilter,
                                                             self::NO_EMPLOYEEID_FILTER,
                                                             $employeeSearch,
                                                             $departmentFilter,

@@ -66,6 +66,22 @@
             </td>
         </tr>
     {/if}
+
+    {if $interfaceObject->showGenderFilter()}
+        <tr>
+            <td>
+                <select onchange="{$interfaceObject->submitFunction()}" id="filter_gender" name="filter_gender">
+                {include    file         = 'components/selectOptionsComponent.tpl'
+                            values       = EmployeeGenderFilterValue::values()
+                            currentValue = $interfaceObject->getSelectedGenderFilterValue()
+                            required     = false
+                            subject      = 'GENDER'|TXT_LC
+                            converter    = 'EmployeeGenderFilterConverter'}
+                </select>
+            </td>
+        </tr>
+    {/if}
+
     {if $interfaceObject->showSortFilter()}
         <tr>
             <td>

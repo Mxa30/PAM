@@ -25,6 +25,7 @@ class EmployeeFilterSafeFormProcessor
             $filtersVisible = EmployeeFilterService::retrieveIsFiltersVisible();
             if ($filtersVisible) {
                 $showAssessmentFilter   = $safeFormHandler->retrieveSafeValue('showAssessmentFilter');
+                $showGenderFilter       = $safeFormHandler->retrieveSafeValue('showGenderFilter');
                 $showBossFilter         = $safeFormHandler->retrieveSafeValue('showBossFilter');
                 $showDepartmentFilter   = $safeFormHandler->retrieveSafeValue('showDepartmentFilter');
                 $showFunctionFilter     = $safeFormHandler->retrieveSafeValue('showFunctionFilter');
@@ -32,6 +33,7 @@ class EmployeeFilterSafeFormProcessor
 
                 // filter waarden ophalen en valideren, opslaan in sessie via EmployeeFilterService
                 $assessmentFilterValue  = !$showAssessmentFilter    ? NULL : $safeFormHandler->retrieveInputValue('filter_assessment');
+                $genderFilterValue      = !$showGenderFilter        ? NULL : $safeFormHandler->retrieveInputValue('filter_gender');
                 $bossFilterValue        = !$showBossFilter          ? NULL : $safeFormHandler->retrieveInputValue('filter_boss');
                 $departmentFilterValue  = !$showDepartmentFilter    ? NULL : $safeFormHandler->retrieveInputValue('filter_department');
                 $functionFilterValue    = !$showFunctionFilter      ? NULL : $safeFormHandler->retrieveInputValue('filter_function');
@@ -47,6 +49,7 @@ class EmployeeFilterSafeFormProcessor
                 EmployeeFilterService::storeEmployeeSearch($employeeSearchValue);
                 if ($filtersVisible) {
                     EmployeeFilterService::storeAssessmentFilter($assessmentFilterValue);
+                    EmployeeFilterService::storeGenderFilter($genderFilterValue);
                     EmployeeFilterService::storeBossFilter($bossFilterValue);
                     EmployeeFilterService::storeDepartmentFilter($departmentFilterValue);
                     EmployeeFilterService::storeFunctionFilter($functionFilterValue);

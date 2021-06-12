@@ -845,6 +845,12 @@ class LanguageTranslationValue
     const en__FILTER_EMPLOYEES_INVITED_YES_MANAGER_FILLED_IN_YES = 'assessment completely filled in';
     const nl__FILTER_EMPLOYEES_INVITED_YES_MANAGER_FILLED_IN_YES = 'evaluatie volledig ingevuld';
     const ev__FILTER_EMPLOYEES_INVITED_YES_MANAGER_FILLED_IN_YES = 'evaluatie volledig ingevuld';
+    const nl__FILTER_EMPLOYEES_GENDER_MALE = 'Man';
+    const en__FILTER_EMPLOYEES_GENDER_MALE = 'Male';
+    const nl__FILTER_EMPLOYEES_GENDER_FEMALE = 'Vrouw';
+    const en__FILTER_EMPLOYEES_GENDER_FEMALE = 'Female';
+    const nl__FILTER_EMPLOYEES_GENDER_OTHER = 'Anders';
+    const en__FILTER_EMPLOYEES_GENDER_OTHER = 'Other';
     const en__FILTER_EMPLOYEES_SORT_ALPHABETICAL = 'sort alphabetical';
     const nl__FILTER_EMPLOYEES_SORT_ALPHABETICAL = 'sorteer alfabetisch';
     const ev__FILTER_EMPLOYEES_SORT_ALPHABETICAL = 'sorteer alfabetisch';

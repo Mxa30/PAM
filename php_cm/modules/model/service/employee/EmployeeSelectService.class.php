@@ -63,7 +63,8 @@ class EmployeeSelectService
     static function getAllAllowedEmployeeIds(   $returnType = self::RETURN_AS_ARRAY,
                                                 $filteredEmployeeIds = self::ALL_EMPLOYEEIDS)
     {
-        return EmployeeFilterService::getAllowedEmployeeIds(self::ALL_BOSSES,
+        return EmployeeFilterService::getAllowedEmployeeIds(null,
+                                                            self::ALL_BOSSES,
                                                             $filteredEmployeeIds,
                                                             self::ALL_NAMES,
                                                             self::ALL_DEPARTMENTS,
@@ -77,7 +78,8 @@ class EmployeeSelectService
                                         $returnType = self::RETURN_AS_ARRAY,
                                         $filteredEmployeeIds = self::ALL_EMPLOYEEIDS)
     {
-        return EmployeeFilterService::getAllowedEmployeeIds($bossId,
+        return EmployeeFilterService::getAllowedEmployeeIds(null, 
+                                                            $bossId,
                                                             $filteredEmployeeIds,
                                                             self::ALL_NAMES,
                                                             self::ALL_DEPARTMENTS,
@@ -145,7 +147,8 @@ class EmployeeSelectService
                                                         $onlyWithoutInvitation,
                                                         AssessmentCycleValueObject $currentCycle)
     {
-        $allowedEmployeeIds = EmployeeFilterService::getAllowedEmployeeIds( $bossId,
+        $allowedEmployeeIds = EmployeeFilterService::getAllowedEmployeeIds( null,
+                                                                            $bossId,
                                                                             self::ALL_EMPLOYEEIDS,
                                                                             $employeeSearch,
                                                                             $departmentId,
@@ -192,7 +195,7 @@ class EmployeeSelectService
                                         BossFilterConverter::display(BossFilterValue::HAS_NO_BOSS));
         }
 
-        $allowedBossIds = EmployeeFilterService::getAllowedEmployeeIds(BossFilterValue::IS_BOSS);
+        $allowedBossIds = EmployeeFilterService::getAllowedEmployeeIds(null, BossFilterValue::IS_BOSS);
         if (!empty($allowedBossIds)) {
 
             // van alle gevonden ids de info ophalen

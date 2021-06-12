@@ -22,6 +22,7 @@ class EmployeeFilterDetail extends BaseInterfaceObject
     private $functionFilterIdValues;
 
     private $selectedAssessmentFilterValue;
+    private $selectedGenderFilterValue;
     private $selectedBossFilterValue;
     private $selectedDepartmentFilterValue;
     private $selectedFunctionFilterValue;
@@ -54,6 +55,7 @@ class EmployeeFilterDetail extends BaseInterfaceObject
         $this->formId = $formId;
         $this->safeFormIdentifier = $safeFormIdentifier;
         $this->showAssessmentFilter = false;
+        $this->showGenderFilter = false;
         $this->showSortFilter = false;
 
         $this->showBossFilter = false;
@@ -76,6 +78,7 @@ class EmployeeFilterDetail extends BaseInterfaceObject
     function showFilters()
     {
         return $this->showAssessmentFilter() ||
+               $this->showGenderFilter() ||
                $this->showSortFilter() ||
                $this->showBossFilter() ||
                $this->showDepartmentFilter() ||
@@ -116,6 +119,27 @@ class EmployeeFilterDetail extends BaseInterfaceObject
         return $this->selectedAssessmentFilterValue;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // gender
+    function setShowGenderFilter($showGenderFilter)
+    {
+        $this->showGenderFilter = $showGenderFilter;
+    }
+
+    function showGenderFilter()
+    {
+        return $this->showGenderFilter;
+    }
+
+    function setSelectedGenderFilterValue($selectedGenderFilterValue)
+    {
+        $this->selectedGenderFilterValue = $selectedGenderFilterValue;
+    }
+
+    function getSelectedGenderFilterValue()
+    {
+        return $this->selectedGenderFilterValue;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // sort

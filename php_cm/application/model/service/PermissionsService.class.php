@@ -345,6 +345,9 @@ class PermissionsService {
                 case 96:
                     define('PERMISSION_DASHBOARD_TRAINING', $permission);
                     break;
+                case 97:
+                    define('PERMISSION_EMPLOYEES_GENDER_FILTER', PERMISSION_EMPLOYEES_GENDER_FILTER ? $permission : PermissionValue::NO_ACCESS);
+                    break;
             }
         }
         define('PERMISSION_MODULE_EMPLOYEES', $module_employees_allowed ? PermissionValue::VIEW_ACCESS : PermissionValue::NO_ACCESS);

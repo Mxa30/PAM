@@ -20,6 +20,7 @@ require_once('modules/interface/interfaceobjects/list/EmployeeFilterDetail.class
 
 // converter
 require_once('modules/interface/converter/list/EmployeeAssessmentFilterConverter.class.php');
+require_once('modules/interface/converter/list/EmployeeGenderFilterConverter.class.php');
 require_once('modules/interface/converter/list/EmployeeSortFilterConverter.class.php');
 
 class EmployeeFilterInterfaceBuilder
@@ -38,6 +39,7 @@ class EmployeeFilterInterfaceBuilder
 
 
         $showAssessmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_ASSESSEMENT_STATE_FILTER);
+        $showGenderFilter     = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_GENDER_FILTER);
         $showBossFilter       = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_BOSS_FILTER);
         $showDepartmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_DEPARTMENT_FILTER);
         $showFunctionFilter   = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_FUNCTION_FILTER);
@@ -52,6 +54,7 @@ class EmployeeFilterInterfaceBuilder
         $safeFilterHandler = SafeFilterHandler::create(self::FILTER_SAFEFORM_ID);
         $safeFilterHandler->storeSafeValue('showSearch', $showSearch);
         $safeFilterHandler->storeSafeValue('showAssessmentFilter', $showAssessmentFilter);
+        $safeFilterHandler->storeSafeValue('showGenderFilter', $showGenderFilter);
         $safeFilterHandler->storeSafeValue('showBossFilter', $showBossFilter);
         $safeFilterHandler->storeSafeValue('showDepartmentFilter', $showDepartmentFilter);
         $safeFilterHandler->storeSafeValue('showFunctionFilter', $showFunctionFilter);
@@ -61,6 +64,7 @@ class EmployeeFilterInterfaceBuilder
         $safeFilterHandler->addStringInputFormatType ('filter_department');
         $safeFilterHandler->addStringInputFormatType ('filter_function');
         $safeFilterHandler->addIntegerInputFormatType('filter_assessment');
+        $safeFilterHandler->addIntegerInputFormatType('filter_gender');
         $safeFilterHandler->addIntegerInputFormatType('filter_sort');
         $safeFilterHandler->addStringInputFormatType ('search_employee');
 
@@ -120,6 +124,7 @@ class EmployeeFilterInterfaceBuilder
     {
         $contentHtml = '';
         $showAssessmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_ASSESSEMENT_STATE_FILTER);
+        $showGenderFilter     = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_GENDER_FILTER);
         $showBossFilter       = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_BOSS_FILTER);
         $showDepartmentFilter = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_DEPARTMENT_FILTER);
         $showFunctionFilter   = PermissionsService::isViewAllowed(PERMISSION_EMPLOYEES_USE_FUNCTION_FILTER);
@@ -128,6 +133,7 @@ class EmployeeFilterInterfaceBuilder
 
         $interfaceObject = EmployeeFilterDetail::create(self::FILTER_FORM_ID, self::FILTER_SAFEFORM_ID, $displayWidth);
         $interfaceObject->setShowAssessmentFilter(  $showAssessmentFilter);
+        $interfaceObject->setShowGenderFilter(      $showGenderFilter);
         $interfaceObject->setShowBossFilter(        $showBossFilter);
         $interfaceObject->setShowDepartmentFilter(  $showDepartmentFilter);
         $interfaceObject->setShowFunctionFilter(    $showFunctionFilter);
@@ -137,6 +143,7 @@ class EmployeeFilterInterfaceBuilder
         $interfaceObject->setIsFiltersVisible(  $isFiltersVisible);
 
         $interfaceObject->setSelectedAssessmentFilterValue( EmployeeFilterService::retrieveAssessmentFilter());
+        $interfaceObject->setSelectedGenderFilterValue(     EmployeeFilterService::retrieveGenderFilter());
         $interfaceObject->setSelectedBossFilterValue(       EmployeeFilterService::retrieveBossFilter());
         $interfaceObject->setSelectedDepartmentFilterValue( EmployeeFilterService::retrieveDepartmentFilter());
         $interfaceObject->setSelectedFunctionFilterValue(   EmployeeFilterService::retrieveFunctionFilter());

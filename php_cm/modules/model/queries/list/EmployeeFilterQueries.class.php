@@ -10,7 +10,8 @@ class EmployeeFilterQueries
     const ID_FIELD = 'ID_E';
 
     // de id's ophalen van de niet verwijderde medewerkers die we mogen zien...
-    static function selectAllowedEmployeeIds(   $searchFilter = null,
+    static function selectAllowedEmployeeIds(   $genderFilter = null,
+                                                $searchFilter = null,
                                                 $filteredEmployeeIds = null,
                                                 $filterBossId = null,
                                                 $selectOnlyIfHasNoBoss = false,
@@ -31,6 +32,9 @@ class EmployeeFilterQueries
         $sqlFilterFunctionId    =   empty($filterMainFunctionId)    ? '' : ' AND e.ID_FID = ' . $filterMainFunctionId;
         $sqlFilterHasEmail      =   !$onlyWithEmail                 ? '' : ' AND e.email_address <> ""';
         $sqlFilterEmployeeIds   =   empty($filteredEmployeeIds)     ? '' : ' AND e.ID_E in (' . $filteredEmployeeIds . ')';
+        
+        $genderNumberToString   =   $genderFilter == 1 ? 'MALE' : ($genderFilter == '2' ? 'FEMALE' : ($genderFilter == 3 ? 'OTHER' : ''));
+        $sqlFilterGender        =   empty($genderNumberToString)            ? '' : ' AND e.sex = \'' . $genderNumberToString . '\'';
 
         // als admin of als je alle afdelingen mag zien mogen alle niet verwijderde medewerkers
         if (USER_LEVEL == UserLevelValue::CUSTOMER_ADMIN || USER_ALLOW_ACCESS_ALL_DEPARTMENTS) {
@@ -48,6 +52,7 @@ class EmployeeFilterQueries
                         ' . $sqlFilterFunctionId . '
                         ' . $sqlFilterHasEmail . '
                         ' . $sqlFilterEmployeeIds . '
+                        ' . $sqlFilterGender . '
                     GROUP BY
                         e.ID_E';
 
