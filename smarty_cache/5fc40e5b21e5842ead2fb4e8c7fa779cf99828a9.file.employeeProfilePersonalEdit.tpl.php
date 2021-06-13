@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-12 21:46:49
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-13 21:49:36
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/profile/employeeProfilePersonalEdit.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:129460c50f29d619f6-05711026%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:596560c66150b77253-45727353%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5fc40e5b21e5842ead2fb4e8c7fa779cf99828a9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/profile/employeeProfilePersonalEdit.tpl',
-      1 => 1623526656,
+      1 => 1623613769,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '129460c50f29d619f6-05711026',
+  'nocache_hash' => '596560c66150b77253-45727353',
   'function' => 
   array (
   ),
@@ -46,7 +46,7 @@ $_smarty_tpl->decodeProperties(array (
     <tr>
         <td class="form-label">
             <label for="SN"><?php echo TXT_UCF('SOCIAL_NUMBER');?>
-</label>
+ aaaa</label>
         </td>
         <td class="form-value">
             <input id="SN" name="SN" type="text" size="30" value="<?php echo $_smarty_tpl->getVariable('valueObject')->value->getBsn();?>
@@ -56,7 +56,7 @@ $_smarty_tpl->decodeProperties(array (
     <tr>
         <td class="form-label">
             <label for="sex"><?php echo TXT_UCF('GENDER');?>
-rrrrrrrrrrrrrrrrrr</label>
+</label>
         </td>
         <td class="form-value">
             <?php $_template = new Smarty_Internal_Template('components/selectRadioComponent.tpl', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);

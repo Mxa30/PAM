@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td class="form-label">
-            <label for="SN">{'SOCIAL_NUMBER'|TXT_UCF}</label>
+            <label for="SN">{'SOCIAL_NUMBER'|TXT_UCF} aaaa</label>
         </td>
         <td class="form-value">
             <input id="SN" name="SN" type="text" size="30" value="{$valueObject->getBsn()}">
@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td class="form-label">
-            <label for="sex">{'GENDER'|TXT_UCF}rrrrrrrrrrrrrrrrrr</label>
+            <label for="sex">{'GENDER'|TXT_UCF}</label>
         </td>
         <td class="form-value">
             {include    file='components/selectRadioComponent.tpl'

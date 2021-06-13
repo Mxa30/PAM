@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-05 17:20:44
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-13 16:40:37
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/finalResult/employeeFinalResultView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2023053834a383b1891-89681290%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '1bd9ac83a50a961af322c47593a2863f6c783b2c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/finalResult/employeeFinalResultView.tpl',
-      1 => 1622902863,
+      1 => 1623007658,
       2 => 'file',
     ),
   ),
@@ -95,7 +95,7 @@ $_smarty_tpl->decodeProperties(array (
             </td>
         </tr>
     <?php if ($_smarty_tpl->getVariable('interfaceObject')->value->showRemarks()){?>
-        <?php if ($_smarty_tpl->getVariable('valueObject')->value->hasTotalScoreComment()&&$_smarty_tpl->getVariable('previousValueObject')->value->hasTotalScoreComment()){?>
+        <?php if ($_smarty_tpl->getVariable('valueObject')->value->hasTotalScoreComment()||$_smarty_tpl->getVariable('previousValueObject')->value->hasTotalScoreComment()){?>
         <tr class="comment-row" id="<?php echo $_smarty_tpl->getVariable('interfaceObject')->value->getToggleNoteId(EmployeeFinalResultView::TOTAL_NOTE_NAME);?>
 " <?php if (!$_smarty_tpl->getVariable('interfaceObject')->value->isInitialVisibleNotes()){?> style="display:none;"<?php }?>>
             <td class="content-line" colspan="100%">

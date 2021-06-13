@@ -660,13 +660,67 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         $max_employeeQuery = BaseQueries::performSelectQuery($sql);
         $max_employee = @mysql_fetch_assoc($max_employeeQuery);
 
+        function validateSN($SN) {
+            $errMessage = '';
+
+            if (strlen($SN) == 0) {
+                return array('result' => true);
+            }
+
+            if (strlen($SN) == 8) {                 // Als BSN 8 characters lang is moet er een 0 voor toegevoegd worden
+                $SN = '0' . $SN;
+            }
+
+            if(strlen($SN) < 9) {
+                $errMessage = TXT_UCF('SN_TOO_SHORT');
+                return array('result' => false, 'msg' => $errMessage);
+            } 
+            if (strlen($SN) > 9) {
+                $errMessage = TXT_UCF('SN_TOO_LONG');
+                return array('result' => false, 'msg' => $errMessage);
+            }
+
+            if (!is_numeric($SN)) {
+                $errMessage = TXT_UCF('SN_CAN_ONLY_BE_NUMBERS');
+                return array('result' => false, 'msg' => $errMessage);
+            }
+
+            if (!elevenTest($SN)) {
+                $errMessage = TXT_UCF('SN_NO_PASS_ELEVEN_TEST');
+                return array('result' => false, 'msg' => $errMessage);
+            } else {
+                return array('result' => true);
+            }
+        }
+
+        function elevenTest($SN) {
+            $testSum = 0;
+            $pos = 9;   
+
+            for ($i = 0; $i < strlen($SN); $i++) {
+                $num = substr($SN, $i, 1);
+                if (is_numeric($num)) {
+                    if ($pos == 1) {$pos = -1;}     // BSN vereist dat laatste positie cijfer -1 is i.p.v 1 
+                    $testSum += $num * $pos;
+                    $pos--;
+                }
+            }
+            $modulo = $testSum % 11;
+            return ($modulo == 0 ? true : false);   // BSN is geldig als resultaat deelbaar is door 11 
+        }
 
         $hasError = false;
+        $validSN = validateSN($SN);
 
         if ($num_employee['total_employees'] >= $max_employee['max_employees'] ||
             $max_employee['max_employees'] == '' ||
             $max_employee['max_employees'] == '0') {
             $message = TXT_UCF('MAXIMUM_NUMBER_OF_EMPLOYEE_ALLOWED_EXCEEDED');
+            $hasError = true;
+        } elseif (!$validSN['result']) {
+            $message = $validSN['msg'];
+            $objResponse->script('xajax.$("SN").focus();');
+            $objResponse->script("console.log('" . validateSN($SN) . "')");
             $hasError = true;
         } elseif (empty($firstname)) {
             $message = TXT_UCF('PLEASE_ENTER_AN_EMPLOYEE_FIRST_NAME');
