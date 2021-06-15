@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td class="form-label">
-            <label for="SN">{'SOCIAL_NUMBER'|TXT_UCF} aaaa</label>
+            <label for="SN">{'SOCIAL_NUMBER'|TXT_UCF}</label>
         </td>
         <td class="form-value">
             <input id="SN" name="SN" type="text" size="30" value="{$valueObject->getBsn()}">

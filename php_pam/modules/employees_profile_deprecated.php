@@ -720,7 +720,6 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         } elseif (!$validSN['result']) {
             $message = $validSN['msg'];
             $objResponse->script('xajax.$("SN").focus();');
-            $objResponse->script("console.log('" . validateSN($SN) . "')");
             $hasError = true;
         } elseif (empty($firstname)) {
             $message = TXT_UCF('PLEASE_ENTER_AN_EMPLOYEE_FIRST_NAME');
