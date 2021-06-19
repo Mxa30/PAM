@@ -15,6 +15,7 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
     private $birthDate;  // database date
     private $bsn;
     private $nationality;
+    private $maritial_status;
 
     // contact
     private $street;
@@ -48,7 +49,8 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
                                         $postcode,
                                         $city,
                                         $phoneNumber,
-                                        $emailAddress)
+                                        $emailAddress,
+                                        $maritial_status)
     {
         $employeePersonalData = array();
 
@@ -59,6 +61,7 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
         $employeePersonalData['lastname']               = $lastName;
         $employeePersonalData['employee']               = $employeeName;
         $employeePersonalData['sex']                    = $gender;
+        $employeePersonalData['maritial_status']        = $maritial_status;
         $employeePersonalData['birthdate']              = $birthDate;  // database date
         $employeePersonalData['SN']                     = $bsn;
         $employeePersonalData['nationality']            = $nationality;
@@ -87,6 +90,7 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
 
         // personal
         $this->gender           = $employeePersonalData['sex'];
+        $this->maritial_status  = $employeePersonalData['maritial_status'];
         $this->birthDate        = $employeePersonalData['birthdate'];  // database date
         $this->bsn              = $employeePersonalData['SN'];
         $this->nationality      = $employeePersonalData['nationality'];
@@ -113,6 +117,13 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
     function getGender()
     {
         return $this->gender;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // $maritial_status
+    function getMaritialStatus()
+    {
+        return $this->maritial_status;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////

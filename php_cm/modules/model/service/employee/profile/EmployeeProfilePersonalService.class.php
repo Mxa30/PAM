@@ -116,6 +116,12 @@ class EmployeeProfilePersonalService
             $messages[] = TXT_UCF('GENDER_IS_INVALID');
         }
 
+        $maritial_status = $valueObject->getMaritialStatus();
+        if (!EmployeeMaritalStatusValue::isValidValue($maritial_status) && $maritial_status != 0) {
+            $hasError = true;
+            $messages[] = TXT_UCF('MARITAL_STATUS_INVALID');
+        }
+
         $birthDate = $valueObject->getBirthDate();
         if (! empty($birthDate)) {
             $checkResult = DateUtils::ValidateDisplayDate(trim($birthDate)); // TODO: validatie error message naar DateUtils!
@@ -143,6 +149,7 @@ class EmployeeProfilePersonalService
                                                         $valueObject->getFirstName(),
                                                         $valueObject->getLastName(),
                                                         $valueObject->getEmployeeName(),
+                                                        $valueObject->getMaritialStatus(),
                                                         $valueObject->getGender(),
                                                         $valueObject->getBirthDate(),
                                                         $valueObject->getBsn(),

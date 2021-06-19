@@ -54,6 +54,21 @@
         </td>
     </tr>
     <tr>
+        <td class="form-label">
+            <label for="maritial_status">{'MARITAL_STATUS'|TXT_UCF}</label>
+        </td>
+        <td class="form-value">
+            <select id="maritial_status" name="maritial_status">
+                <option value="0">- {'SELECT'|TXT_LC} {'MARITAL_STATUS'|TXT_UCF} -</option>
+                {foreach EmployeeMaritalStatusValue::values() as $value}
+                    {assign var=text value=EmployeeMaritalStateConverter::display($value)}
+                    {assign var=selectedValue value=$valueObject->getMaritialStatus()}
+                    <option value="{$value}" {if $selectedValue == $value}selected{/if}>{$text}</option>
+                {/foreach}
+            </select>
+        </td>
+    </tr>
+    <tr>
         <td class="form-label">&nbsp;</td>
         <td class="form-value">&nbsp;</td>
     </tr>

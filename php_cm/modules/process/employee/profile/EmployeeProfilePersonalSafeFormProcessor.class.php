@@ -25,6 +25,7 @@ class EmployeeProfilePersonalSafeFormProcessor
             $lastName           = $safeFormHandler->retrieveInputValue('lastname');
             $bsn                = $safeFormHandler->retrieveInputValue('SN');
             $gender             = $safeFormHandler->retrieveInputValue('sex');
+            $maritial_status    = $safeFormHandler->retrieveInputValue('maritial_status');
             $birthDisplayDate   = $safeFormHandler->retrieveInputValue('birth_date'); // vanwege de !readonly een string
             $nationality        = $safeFormHandler->retrieveInputValue('nationality');
             $street             = $safeFormHandler->retrieveInputValue('street');
@@ -46,7 +47,8 @@ class EmployeeProfilePersonalSafeFormProcessor
                                                                                 $postcode,
                                                                                 $city,
                                                                                 $phoneNumber,
-                                                                                $emailAddress);
+                                                                                $emailAddress,
+                                                                                $maritial_status);
 
             list($hasError, $messages) = EmployeeProfileController::processEditPersonal($employeeId, $valueObject, $isEmailRequired);
             if (!$hasError) {

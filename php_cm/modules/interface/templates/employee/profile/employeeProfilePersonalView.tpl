@@ -63,6 +63,18 @@
     {else}
         {assign var=extraRows value=$extraRows+1}
     {/if}
+
+    {assign var=maritial_status value=$valueObject->getMaritialStatus()}
+    {assign var=maritial_status_text value=EmployeeMaritalStateConverter::display($maritial_status)}
+    {if !empty($maritial_status)}
+    <tr>
+        <td class="content-label">{'MARITAL_STATUS'|TXT_UCF}:</td>
+        <td class="content-value">{$maritial_status_text}</td>
+    </tr>
+    {else}
+        {assign var=extraRows value=$extraRows+1}
+    {/if}
+
     <tr>
         <td class="content-label">&nbsp;</td>
         <td class="content-value">&nbsp;</td>

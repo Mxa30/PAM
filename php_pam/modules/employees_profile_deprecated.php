@@ -15,6 +15,8 @@ require_once('application/interface/InterfaceBuilder.class.php');
 
 require_once('modules/model/service/employee/profile/EmployeeProfileService.class.php');
 
+require_once('modules/model/value/employee/profile/EmployeeMaritalStatusValue.class.php');
+require_once('modules/interface/converter/employee/profile/EmployeeMaritalStateConverter.class.php');
 
 function moduleEmployees_no_rights($objResponse) {
 
@@ -77,6 +79,7 @@ function moduleEmployees_profileForm_deprecated($id_e) {
         $safeFormHandler->addStringInputFormatType('lastname');
         $safeFormHandler->addStringInputFormatType('SN');
         $safeFormHandler->addStringInputFormatType('sex');
+        $safeFormHandler->addStringInputFormatType('maritial_status');
         $safeFormHandler->addStringInputFormatType('birthdate');
         $safeFormHandler->addStringInputFormatType('nationality');
         $safeFormHandler->addStringInputFormatType('is_boss', true);
@@ -189,7 +192,24 @@ function moduleEmployees_profileForm_deprecated($id_e) {
                                 <td><input name="nationality" type="text" id="nationality" size="30" value="' . htmlspecialchars($get_e[nationality]) . '" tabindex="6"></td>
                                 <td>&nbsp; </td>
                                 <td>&nbsp;</td>
+                            </tr>'.
+                            '
+                            <tr>
+                            <td class="bottom_line">' . TXT_UCF(MARITAL_STATUS) . ' : </td>
+                            <td>
+                                <select id="maritial_status" name="maritial_status">' .
+                                    '<option value="0">- ' . TXT_UCF(SELECT) . ' ' . TXT_UCF(MARITAL_STATUS) . '-</option>';
+                                    foreach(EmployeeMaritalStatusValue::values() as $value) {
+                                        $text = EmployeeMaritalStateConverter::display($value);
+                                        $getemp_data .= '<option value="' . $value . '">' . $text . '</option>';
+                                    }
+                                $getemp_data .= '</select>
+                            </td>
+                            <td>&nbsp; </td>
+                            <td>&nbsp;</td>
                             </tr>
+                            '
+                            .'
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -602,6 +622,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         $rating = CUSTOMER_OPTION_USE_RATING_DICTIONARY ? $safeFormHandler->retrieveInputValue('rating') : RATING_FUNCTION_PROFILE;
         $SN = $safeFormHandler->retrieveInputValue('SN');
         $sex = $safeFormHandler->retrieveInputValue('sex');
+        $maritial_status = $safeFormHandler->retrieveInputValue('maritial_status');
         $birthdate = $safeFormHandler->retrieveInputValue('birthdate');
         $nationality = $safeFormHandler->retrieveInputValue('nationality');
         $address = $safeFormHandler->retrieveInputValue('address');
@@ -727,6 +748,9 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         } elseif (empty($lastname)) {
             $message = TXT_UCF('PLEASE_ENTER_AN_EMPLOYEE_LAST_NAME');
             $hasError = true;
+        } elseif (!EmployeeMaritalStatusValue::isValidValue($maritial_status) && $maritial_status != 0) {
+            $message = TXT_UCF('MARITAL_STATUS_INVALID');
+            $hasError = true;
         } elseif (CUSTOMER_OPTION_REQUIRED_EMP_EMAIL && empty($email_address)) { // hbd: email ook verplicht
             $message = TXT_UCF('PLEASE_ENTER_AN_EMPLOYEE_EMAIL');
             $hasError = true;
@@ -825,6 +849,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
                             sex,
                             birthdate,
                             nationality,
+                            maritial_status,
                             address,
                             postal_code,
                             city,
@@ -857,6 +882,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
                             "' . mysql_real_escape_string($sex) . '",
                             "' . mysql_real_escape_string($birthdate) . '",
                             "' . mysql_real_escape_string($nationality) . '",
+                            "' . mysql_real_escape_string($maritial_status) . '",
                             "' . mysql_real_escape_string($address) . '",
                             "' . mysql_real_escape_string($postal_code) . '",
                             "' . mysql_real_escape_string($city) . '",
