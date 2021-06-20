@@ -122,6 +122,12 @@ class EmployeeProfilePersonalService
             $messages[] = TXT_UCF('MARITAL_STATUS_INVALID');
         }
 
+        $homepage = $valueObject->getHomepage();
+        if (!filter_var($homepage, FILTER_VALIDATE_URL)) {
+            $hasError = true;
+            $messages[] = TXT_UCF('HOMEPAGE_NOT_A_URL');
+        }
+
         $birthDate = $valueObject->getBirthDate();
         if (! empty($birthDate)) {
             $checkResult = DateUtils::ValidateDisplayDate(trim($birthDate)); // TODO: validatie error message naar DateUtils!
@@ -150,6 +156,7 @@ class EmployeeProfilePersonalService
                                                         $valueObject->getLastName(),
                                                         $valueObject->getEmployeeName(),
                                                         $valueObject->getMaritialStatus(),
+                                                        $valueObject->getHomepage(),
                                                         $valueObject->getGender(),
                                                         $valueObject->getBirthDate(),
                                                         $valueObject->getBsn(),

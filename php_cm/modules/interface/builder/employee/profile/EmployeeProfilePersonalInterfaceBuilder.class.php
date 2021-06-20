@@ -68,6 +68,7 @@ class EmployeeProfilePersonalInterfaceBuilder
         $safeFormHandler->addStringInputFormatType('SN');
         $safeFormHandler->addStringInputFormatType('sex');
         $safeFormHandler->addStringInputFormatType('maritial_status');
+        $safeFormHandler->addStringInputFormatType('homepage');
         $safeFormHandler->addStringInputFormatType('birth_date'); // vanwege de !readonly een string
         $safeFormHandler->addStringInputFormatType('nationality');
         $safeFormHandler->addStringInputFormatType('street');

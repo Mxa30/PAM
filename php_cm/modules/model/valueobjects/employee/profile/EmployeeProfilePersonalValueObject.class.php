@@ -50,7 +50,8 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
                                         $city,
                                         $phoneNumber,
                                         $emailAddress,
-                                        $maritial_status)
+                                        $maritial_status,
+                                        $homepage)
     {
         $employeePersonalData = array();
 
@@ -62,6 +63,7 @@ class EmployeeProfilePersonalValueObject extends BaseEmployeeProfileValueObject
         $employeePersonalData['employee']               = $employeeName;
         $employeePersonalData['sex']                    = $gender;
         $employeePersonalData['maritial_status']        = $maritial_status;
+        $employeePersonalData['homepage']               = $homepage;
         $employeePersonalData['birthdate']              = $birthDate;  // database date
         $employeePersonalData['SN']                     = $bsn;
         $employeePersonalData['nationality']            = $nationality;

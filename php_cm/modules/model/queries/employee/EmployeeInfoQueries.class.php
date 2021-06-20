@@ -22,6 +22,7 @@ class EmployeeInfoQueries
                     e.boss_fid,
                     e.sex,
                     e.maritial_status,
+                    e.homepage,
                     e.is_inactive,
                     b.email_address as boss_email_address,
                     b.firstname as boss_firstname,

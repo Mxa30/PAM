@@ -80,6 +80,7 @@ function moduleEmployees_profileForm_deprecated($id_e) {
         $safeFormHandler->addStringInputFormatType('SN');
         $safeFormHandler->addStringInputFormatType('sex');
         $safeFormHandler->addStringInputFormatType('maritial_status');
+        $safeFormHandler->addStringInputFormatType('homepage');
         $safeFormHandler->addStringInputFormatType('birthdate');
         $safeFormHandler->addStringInputFormatType('nationality');
         $safeFormHandler->addStringInputFormatType('is_boss', true);
@@ -208,6 +209,16 @@ function moduleEmployees_profileForm_deprecated($id_e) {
                             <td>&nbsp; </td>
                             <td>&nbsp;</td>
                             </tr>
+
+                            <tr>
+                            <td class="bottom_line">' . TXT_UCF(HOMEPAGE) . ' : </td>
+                            <td>
+                                <input name="homepage" type="text" id="homepage" size="30" tabindex="16">
+                            </td>
+                            <td>&nbsp; </td>
+                            <td>&nbsp;</td>
+                            </tr>
+
                             '
                             .'
                             <tr>
@@ -623,6 +634,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         $SN = $safeFormHandler->retrieveInputValue('SN');
         $sex = $safeFormHandler->retrieveInputValue('sex');
         $maritial_status = $safeFormHandler->retrieveInputValue('maritial_status');
+        $homepage = $safeFormHandler->retrieveInputValue('homepage');
         $birthdate = $safeFormHandler->retrieveInputValue('birthdate');
         $nationality = $safeFormHandler->retrieveInputValue('nationality');
         $address = $safeFormHandler->retrieveInputValue('address');
@@ -751,6 +763,9 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         } elseif (!EmployeeMaritalStatusValue::isValidValue($maritial_status) && $maritial_status != 0) {
             $message = TXT_UCF('MARITAL_STATUS_INVALID');
             $hasError = true;
+        } elseif (!filter_var($homepage, FILTER_VALIDATE_URL)) {
+            $message = TXT_UCF('HOMEPAGE_NOT_A_URL');
+            $hasError = true;
         } elseif (CUSTOMER_OPTION_REQUIRED_EMP_EMAIL && empty($email_address)) { // hbd: email ook verplicht
             $message = TXT_UCF('PLEASE_ENTER_AN_EMPLOYEE_EMAIL');
             $hasError = true;
@@ -850,6 +865,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
                             birthdate,
                             nationality,
                             maritial_status,
+                            homepage,
                             address,
                             postal_code,
                             city,
@@ -883,6 +899,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
                             "' . mysql_real_escape_string($birthdate) . '",
                             "' . mysql_real_escape_string($nationality) . '",
                             "' . mysql_real_escape_string($maritial_status) . '",
+                            "' . mysql_real_escape_string($homepage) . '",
                             "' . mysql_real_escape_string($address) . '",
                             "' . mysql_real_escape_string($postal_code) . '",
                             "' . mysql_real_escape_string($city) . '",

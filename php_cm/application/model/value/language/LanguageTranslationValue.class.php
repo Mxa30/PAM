@@ -65,6 +65,12 @@ class LanguageTranslationValue
     const ev__FEMALE = 'vrouw';
     const en__OTHER = 'Other';
     const nl__OTHER = 'Anders';
+    const en__HOMEPAGE = 'homepage url';
+    const nl__HOMEPAGE = 'homepage url';
+    const ev__HOMEPAGE = 'homepage url';
+    const en__HOMEPAGE_NOT_A_URL = "homepage is not a valid url. Make sure you put 'http://' or 'https://' in front of the url";
+    const nl__HOMEPAGE_NOT_A_URL = "homepage bevat geen geldige url. Zorg dat je 'http://' of 'https://' voor de url zet";
+    const ev__HOMEPAGE_NOT_A_URL = "homepage bevat geen geldige url. Zorg dat je 'http://' of 'https://' voor de url zet";
     const en__MARITAL_STATUS = 'marital status';
     const nl__MARITAL_STATUS = 'burgerlijke staat';
     const ev__MARITAL_STATUS = 'burgerlijke staat';

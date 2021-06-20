@@ -69,6 +69,14 @@
         </td>
     </tr>
     <tr>
+        <td class="form-label">
+            <label for="homepage">{'HOMEPAGE'|TXT_UCF}</label>
+        </td>
+        <td class="form-value">
+            <input id="homepage" name="homepage" type="text" size="30" value="{$valueObject->getHomepage()}">
+        </td>
+    </tr>
+    <tr>
         <td class="form-label">&nbsp;</td>
         <td class="form-value">&nbsp;</td>
     </tr>

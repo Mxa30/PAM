@@ -16,7 +16,8 @@
         </td>
         {/if}
         <td style="vertical-align:middle">
-            <h1 title="{'EMPLOYEE'|TXT_UCF}">{$valueObject->getEmployeeName()}</h1>
+            {assign var=employeeName value=$valueObject->getEmployeeName()}
+            <h1 title="{'EMPLOYEE'|TXT_UCF}">{$employeeName}</h1>
             {assign var=department value=$valueObject->getDepartmentName()}
             {if !empty($department)}
             <div title="{'DEPARTMENT'|TXT_UCF}">{$department}</div>
@@ -24,6 +25,10 @@
             {assign var=bossName value=$valueObject->getBossName()}
             {if !empty($bossName)}
             <div title="{'MANAGER'|TXT_UCF}">{$bossName}</div>
+            {/if}
+            {assign var=homepage value=$valueObject->getHomepage()}
+            {if !empty($homepage)}
+            <a href="{$homepage}" target="_blank">Homepage</a>
             {/if}
         </td>
         <td style="width:50px; text-align:right; vertical-align:top;">

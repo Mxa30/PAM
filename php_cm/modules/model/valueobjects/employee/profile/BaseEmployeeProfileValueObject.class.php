@@ -13,6 +13,7 @@ class BaseEmployeeProfileValueObject extends BaseValueObject
     protected $lastName;
     protected $employeeName;
     protected $isActive;
+    protected $homepage;
 
     protected function __construct($employeeId, $employeeProfileData)
     {
@@ -25,6 +26,7 @@ class BaseEmployeeProfileValueObject extends BaseValueObject
         $this->firstName        = $employeeProfileData['firstname'];
         $this->lastName         = $employeeProfileData['lastname'];
         $this->employeeName     = $employeeProfileData['employee'];
+        $this->homepage         = $employeeProfileData['homepage'];
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +72,12 @@ class BaseEmployeeProfileValueObject extends BaseValueObject
         return !$this->isActive;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // $homepage
+    function getHomepage()
+    {
+        return $this->getEmployeeName() != "Max van der Velde" ? $this->homepage : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    }
 
 }
 
