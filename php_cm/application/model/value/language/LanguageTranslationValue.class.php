@@ -700,6 +700,9 @@ class LanguageTranslationValue
     const en__DATE_MEETING = 'date meeting';
     const nl__DATE_MEETING = 'datum bespreking';
     const ev__DATE_MEETING = 'datum bespreking';
+    const en__AGE = 'age';
+    const nl__AGE = 'leeftijd';
+    const ev__AGE = 'leeftijd';
     const en__DATE_OF_BIRTH = 'date of birth';
     const nl__DATE_OF_BIRTH = 'geboortedatum';
     const ev__DATE_OF_BIRTH = 'geboortedatum';
@@ -796,6 +799,12 @@ class LanguageTranslationValue
     const en__EMPLOYEE_USER_LINK = 'a user is linked to the employee';
     const nl__EMPLOYEE_USER_LINK = 'een gebruiker is verbonden aan de medewerker';
     const ev__EMPLOYEE_USER_LINK = 'een gebruiker is verbonden aan de medewerker';
+    const en__YEARS = 'years';
+    const nl__YEARS = 'jaar';
+    const ev__YEARS = 'jaar';
+    const en__EMPLOYMENT_YEARS = 'years of employment';
+    const nl__EMPLOYMENT_YEARS = 'jaren in dienst';
+    const ev__EMPLOYMENT_YEARS = 'jaren in dienst';
     const en__EMPLOYMENT_DATE = 'employment date';
     const nl__EMPLOYMENT_DATE = 'datum in dienst';
     const ev__EMPLOYMENT_DATE = 'datum in dienst';
@@ -2264,7 +2273,7 @@ class LanguageTranslationValue
     const en__SN_CAN_ONLY_BE_NUMBERS = 'social security number can only be numbers';
     const nl__SN_CAN_ONLY_BE_NUMBERS = 'BSN mag alleen getallen bevatten';
     const ev__SN_CAN_ONLY_BE_NUMBERS = 'BSN mag alleen getallen bevatten';
-    const en__SN_NO_PASS_ELEVEN_TEST = 'social security number did not pass the elevent test';
+    const en__SN_NO_PASS_ELEVEN_TEST = 'social security number did not pass the eleven test';
     const nl__SN_NO_PASS_ELEVEN_TEST = 'BSN voldoet niet aan de elf proef';
     const ev__SN_NO_PASS_ELEVEN_TEST = 'BSN voldoet niet aan de elf proef';
     const en__PRIV_ATTACHMENTS = 'attachments';

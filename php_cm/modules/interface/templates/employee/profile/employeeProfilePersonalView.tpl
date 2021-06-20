@@ -51,6 +51,10 @@
         <td class="content-label">{'DATE_OF_BIRTH'|TXT_UCF}:</td>
         <td class="content-value">{$birthDate}</td>
     </tr>
+    <tr>
+        <td class="content-label">{'AGE'|TXT_UCF}:</td>
+        <td class="content-value">{round((time()-strtotime($birthDate))/(3600*24*365.25))} {'YEARS'|TXT_UCF}</td>
+    </tr>
     {else}
         {assign var=extraRows value=$extraRows+1}
     {/if}

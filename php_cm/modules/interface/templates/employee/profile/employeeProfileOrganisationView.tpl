@@ -39,6 +39,10 @@
         <td class="content-label">{'EMPLOYMENT_DATE'|TXT_UCF}:</td>
         <td class="content-value">{DateConverter::display($employmentDate)}</td>
     </tr>
+    <tr>
+        <td class="content-label">{'EMPLOYMENT_YEARS'|TXT_UCF}:</td>
+        <td class="content-value">{round((time()-strtotime($employmentDate))/(3600*24*365.25))} {'YEARS'|TXT_UCF}</td>
+    </tr>
     {/if}
     {assign var=contractState value=$valueObject->getContractState()}
     {if !empty($contractState)}
