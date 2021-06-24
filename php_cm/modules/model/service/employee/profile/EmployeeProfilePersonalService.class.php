@@ -111,7 +111,7 @@ class EmployeeProfilePersonalService
         }
 
         $gender = $valueObject->getGender();
-        if (!EmployeeGenderValue::isValidValue($gender)) {
+        if (!empty($gender) && !EmployeeGenderValue::isValidValue($gender)) {
             $hasError = true;
             $messages[] = TXT_UCF('GENDER_IS_INVALID');
         }
