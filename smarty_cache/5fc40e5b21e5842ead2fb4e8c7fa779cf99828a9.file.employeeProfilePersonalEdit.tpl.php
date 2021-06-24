@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-13 21:49:36
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:47
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/profile/employeeProfilePersonalEdit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:596560c66150b77253-45727353%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '5fc40e5b21e5842ead2fb4e8c7fa779cf99828a9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/profile/employeeProfilePersonalEdit.tpl',
-      1 => 1623613769,
+      1 => 1624192608,
       2 => 'file',
     ),
   ),
@@ -46,7 +46,7 @@ $_smarty_tpl->decodeProperties(array (
     <tr>
         <td class="form-label">
             <label for="SN"><?php echo TXT_UCF('SOCIAL_NUMBER');?>
- aaaa</label>
+</label>
         </td>
         <td class="form-value">
             <input id="SN" name="SN" type="text" size="30" value="<?php echo $_smarty_tpl->getVariable('valueObject')->value->getBsn();?>
@@ -80,6 +80,40 @@ $_template->assign('inputName','sex');$_template->assign('values',EmployeeGender
         </td>
         <td class="form-value">
             <input id="nationality" name="nationality" type="text" size="30" value="<?php echo $_smarty_tpl->getVariable('valueObject')->value->getNationality();?>
+">
+        </td>
+    </tr>
+    <tr>
+        <td class="form-label">
+            <label for="maritial_status"><?php echo TXT_UCF('MARITAL_STATUS');?>
+</label>
+        </td>
+        <td class="form-value">
+            <select id="maritial_status" name="maritial_status">
+                <option value="0">- <?php echo TXT_LC('SELECT');?>
+ <?php echo TXT_UCF('MARITAL_STATUS');?>
+ -</option>
+                <?php  $_smarty_tpl->tpl_vars['value'] = new Smarty_Variable;
+ $_from = EmployeeMaritalStatusValue::values(); if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if ($_smarty_tpl->_count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_vars['value']->value){
+?>
+                    <?php $_smarty_tpl->tpl_vars['text'] = new Smarty_variable(EmployeeMaritalStateConverter::display($_smarty_tpl->tpl_vars['value']->value), null, null);?>
+                    <?php $_smarty_tpl->tpl_vars['selectedValue'] = new Smarty_variable($_smarty_tpl->getVariable('valueObject')->value->getMaritialStatus(), null, null);?>
+                    <option value="<?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+" <?php if ($_smarty_tpl->getVariable('selectedValue')->value==$_smarty_tpl->tpl_vars['value']->value){?>selected<?php }?>><?php echo $_smarty_tpl->getVariable('text')->value;?>
+</option>
+                <?php }} ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td class="form-label">
+            <label for="homepage"><?php echo TXT_UCF('HOMEPAGE');?>
+</label>
+        </td>
+        <td class="form-value">
+            <input id="homepage" name="homepage" type="text" size="30" value="<?php echo $_smarty_tpl->getVariable('valueObject')->value->getHomepage();?>
 ">
         </td>
     </tr>

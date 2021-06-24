@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-13 21:49:33
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:42
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/profile/employeeProfilePersonalView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:176460c6614dcc2ce4-73657505%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '3fd6897607ec6cb96446a5e49fb7c295a1a9bad5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/profile/employeeProfilePersonalView.tpl',
-      1 => 1623613743,
+      1 => 1624183816,
       2 => 'file',
     ),
   ),
@@ -86,6 +86,13 @@ $_smarty_tpl->decodeProperties(array (
         <td class="content-value"><?php echo $_smarty_tpl->getVariable('birthDate')->value;?>
 </td>
     </tr>
+    <tr>
+        <td class="content-label"><?php echo TXT_UCF('AGE');?>
+:</td>
+        <td class="content-value"><?php echo round((time()-strtotime($_smarty_tpl->getVariable('birthDate')->value))/(3600*24*365.25));?>
+ <?php echo TXT_UCF('YEARS');?>
+</td>
+    </tr>
     <?php }else{ ?>
         <?php $_smarty_tpl->tpl_vars['extraRows'] = new Smarty_variable($_smarty_tpl->getVariable('extraRows')->value+1, null, null);?>
     <?php }?>
@@ -100,6 +107,20 @@ $_smarty_tpl->decodeProperties(array (
     <?php }else{ ?>
         <?php $_smarty_tpl->tpl_vars['extraRows'] = new Smarty_variable($_smarty_tpl->getVariable('extraRows')->value+1, null, null);?>
     <?php }?>
+
+    <?php $_smarty_tpl->tpl_vars['maritial_status'] = new Smarty_variable($_smarty_tpl->getVariable('valueObject')->value->getMaritialStatus(), null, null);?>
+    <?php $_smarty_tpl->tpl_vars['maritial_status_text'] = new Smarty_variable(EmployeeMaritalStateConverter::display($_smarty_tpl->getVariable('maritial_status')->value), null, null);?>
+    <?php if (!empty($_smarty_tpl->getVariable('maritial_status',null,true,false)->value)){?>
+    <tr>
+        <td class="content-label"><?php echo TXT_UCF('MARITAL_STATUS');?>
+:</td>
+        <td class="content-value"><?php echo $_smarty_tpl->getVariable('maritial_status_text')->value;?>
+</td>
+    </tr>
+    <?php }else{ ?>
+        <?php $_smarty_tpl->tpl_vars['extraRows'] = new Smarty_variable($_smarty_tpl->getVariable('extraRows')->value+1, null, null);?>
+    <?php }?>
+
     <tr>
         <td class="content-label">&nbsp;</td>
         <td class="content-value">&nbsp;</td>

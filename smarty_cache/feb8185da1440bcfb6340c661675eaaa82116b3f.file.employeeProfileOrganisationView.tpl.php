@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-05 17:20:39
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:42
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/profile/employeeProfileOrganisationView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3240952406ee4f086f4-12574175%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     'feb8185da1440bcfb6340c661675eaaa82116b3f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/profile/employeeProfileOrganisationView.tpl',
-      1 => 1622902864,
+      1 => 1624183930,
       2 => 'file',
     ),
   ),
@@ -71,6 +71,13 @@ $_smarty_tpl->decodeProperties(array (
         <td class="content-label"><?php echo TXT_UCF('EMPLOYMENT_DATE');?>
 :</td>
         <td class="content-value"><?php echo DateConverter::display($_smarty_tpl->getVariable('employmentDate')->value);?>
+</td>
+    </tr>
+    <tr>
+        <td class="content-label"><?php echo TXT_UCF('EMPLOYMENT_YEARS');?>
+:</td>
+        <td class="content-value"><?php echo round((time()-strtotime($_smarty_tpl->getVariable('employmentDate')->value))/(3600*24*365.25));?>
+ <?php echo TXT_UCF('YEARS');?>
 </td>
     </tr>
     <?php }?>

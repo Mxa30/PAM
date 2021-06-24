@@ -123,7 +123,7 @@ class EmployeeProfilePersonalService
         }
 
         $homepage = $valueObject->getHomepage();
-        if (!filter_var($homepage, FILTER_VALIDATE_URL)) {
+        if (!empty($homepage) && !filter_var($homepage, FILTER_VALIDATE_URL)) {
             $hasError = true;
             $messages[] = TXT_UCF('HOMEPAGE_NOT_A_URL');
         }

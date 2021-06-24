@@ -763,7 +763,7 @@ function employees_processSafeForm_addEmployee_deprecated($objResponse, $safeFor
         } elseif (!EmployeeMaritalStatusValue::isValidValue($maritial_status) && $maritial_status != 0) {
             $message = TXT_UCF('MARITAL_STATUS_INVALID');
             $hasError = true;
-        } elseif (!filter_var($homepage, FILTER_VALIDATE_URL)) {
+        } elseif (!empty($homepage) && !filter_var($homepage, FILTER_VALIDATE_URL)) {
             $message = TXT_UCF('HOMEPAGE_NOT_A_URL');
             $hasError = true;
         } elseif (CUSTOMER_OPTION_REQUIRED_EMP_EMAIL && empty($email_address)) { // hbd: email ook verplicht

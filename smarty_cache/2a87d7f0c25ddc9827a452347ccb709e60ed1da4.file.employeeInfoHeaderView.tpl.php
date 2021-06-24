@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-05 17:20:39
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:41
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\employee/employeeInfoHeaderView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:962952406ee4bc0601-71218540%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '2a87d7f0c25ddc9827a452347ccb709e60ed1da4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\employee/employeeInfoHeaderView.tpl',
-      1 => 1622902862,
+      1 => 1624194045,
       2 => 'file',
     ),
   ),
@@ -43,8 +43,9 @@ px; padding-right:10px;">
         </td>
         <?php }?>
         <td style="vertical-align:middle">
+            <?php $_smarty_tpl->tpl_vars['employeeName'] = new Smarty_variable($_smarty_tpl->getVariable('valueObject')->value->getEmployeeName(), null, null);?>
             <h1 title="<?php echo TXT_UCF('EMPLOYEE');?>
-"><?php echo $_smarty_tpl->getVariable('valueObject')->value->getEmployeeName();?>
+"><?php echo $_smarty_tpl->getVariable('employeeName')->value;?>
 </h1>
             <?php $_smarty_tpl->tpl_vars['department'] = new Smarty_variable($_smarty_tpl->getVariable('valueObject')->value->getDepartmentName(), null, null);?>
             <?php if (!empty($_smarty_tpl->getVariable('department',null,true,false)->value)){?>
@@ -57,6 +58,11 @@ px; padding-right:10px;">
             <div title="<?php echo TXT_UCF('MANAGER');?>
 "><?php echo $_smarty_tpl->getVariable('bossName')->value;?>
 </div>
+            <?php }?>
+            <?php $_smarty_tpl->tpl_vars['homepage'] = new Smarty_variable($_smarty_tpl->getVariable('valueObject')->value->getHomepage(), null, null);?>
+            <?php if (!empty($_smarty_tpl->getVariable('homepage',null,true,false)->value)){?>
+            <a href="<?php echo $_smarty_tpl->getVariable('homepage')->value;?>
+" target="_blank">Homepage</a>
             <?php }?>
         </td>
         <td style="width:50px; text-align:right; vertical-align:top;">

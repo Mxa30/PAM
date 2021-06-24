@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-05 17:14:18
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:41
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/modules/interface/templates\base/baseBlockHeader.inc.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3017952406ee4cbd1c1-28038455%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '26abf66ca01b506c8ee20e07246c2cb622bdf2c7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/modules/interface/templates\\base/baseBlockHeader.inc.tpl',
-      1 => 1622902861,
+      1 => 1624101546,
       2 => 'file',
     ),
   ),

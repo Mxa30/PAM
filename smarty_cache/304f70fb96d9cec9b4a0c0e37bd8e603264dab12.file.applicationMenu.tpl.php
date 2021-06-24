@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2021-06-05 17:10:24
+<?php /* Smarty version Smarty-3.0.7, created on 2021-06-24 10:20:39
          compiled from "C:\xampp\htdocs\gino-pam\php_cm/application/interface/templates\navigation/applicationMenu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:593352406ee28e5b85-36829471%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '304f70fb96d9cec9b4a0c0e37bd8e603264dab12' => 
     array (
       0 => 'C:\\xampp\\htdocs\\gino-pam\\php_cm/application/interface/templates\\navigation/applicationMenu.tpl',
-      1 => 1622902845,
+      1 => 1624101545,
       2 => 'file',
     ),
   ),
